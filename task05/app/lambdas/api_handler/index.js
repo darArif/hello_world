@@ -2,46 +2,51 @@ const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
-const EVENTS_TABLE = process.env.TARGET_TABLE; // AWS Syndicate alias passed via env var
+const TABLE_NAME = process.env.target_table;  // AWS-Syndicate injected alias
 
 exports.handler = async (event) => {
     try {
-        const body = JSON.parse(event.body);
+        const requestBody = JSON.parse(event.body);
 
-        const newEvent = {
+        const { principalId, content } = requestBody;
+
+        if (typeof principalId !== 'number' || typeof content !== 'object') {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: 'Invalid request format' })
+            };
+        }
+
+        const createdEvent = {
             id: uuidv4(),
-            principalId: body.principalId,
+            principalId,
             createdAt: new Date().toISOString(),
-            body: body.content
+            body: content
         };
 
-        const params = {
-            TableName: EVENTS_TABLE,
-            Item: newEvent
-        };
-
-        await dynamoDb.put(params).promise();
+        await saveEventToDynamoDB(createdEvent);
 
         return {
             statusCode: 201,
             body: JSON.stringify({
                 statusCode: 201,
-                event: newEvent
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
+                event: createdEvent
+            })
         };
     } catch (error) {
-        console.error("Error processing request:", error);
-
+        console.error('Error handling event:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: "Internal Server Error" }),
-            headers: {
-                "Content-Type": "application/json"
-            }
+            body: JSON.stringify({ message: 'Internal server error' })
         };
     }
 };
+
+async function saveEventToDynamoDB(event) {
+    const params = {
+        TableName: TABLE_NAME,
+        Item: event
+    };
+
+    await dynamoDb.put(params).promise();
+}

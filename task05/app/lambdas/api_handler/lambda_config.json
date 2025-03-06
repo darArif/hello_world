@@ -10,28 +10,12 @@
   "lambda_path": "lambdas\\api_handler",
   "dependencies": [],
   "event_sources": [],
-  "env_variables": {},
+  "env_variables": {
+    "target_table": "Events"
+  },
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
-  "url_config": {
-    "/": {
-      "GET": {
-        "lambda_name": "api_handler",
-        "auth_type": "NONE"
-      }
-    },
-    "/events": {
-      "GET": {
-        "lambda_name": "api_handler",
-        "auth_type": "NONE"
-      },
-      "POST": {
-        "lambda_name": "api_handler",
-        "auth_type": "NONE"
-      }
-    },
-    "auth_type": "NONE"
-  },
+  "url_config": {},
   "ephemeral_storage": 512,
   "tags": {}
 }

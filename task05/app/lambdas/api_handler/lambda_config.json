@@ -13,7 +13,25 @@
   "env_variables": {},
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
-  "url_config": {},
+  "url_config": {
+    "/": {
+      "GET": {
+        "lambda_name": "api_handler",
+        "auth_type": "NONE"
+      }
+    },
+    "/events": {
+      "GET": {
+        "lambda_name": "api_handler",
+        "auth_type": "NONE"
+      },
+      "POST": {
+        "lambda_name": "api_handler",
+        "auth_type": "NONE"
+      }
+    },
+    "auth_type": "NONE"
+  },
   "ephemeral_storage": 512,
   "tags": {}
 }

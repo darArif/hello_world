@@ -1,0 +1,62 @@
+{
+  "hello_world-role": {
+    "resource_type": "iam_role",
+    "principal_service": "lambda",
+    "predefined_policies": [],
+    "custom_policies": [
+      {
+        "PolicyName": "LambdaBasicExecution",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": "arn:aws:logs:*:*:*"
+            }
+          ]
+        }
+      },
+      {
+        "PolicyName": "S3AccessPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+              ],
+              "Resource": "arn:aws:s3:::example-bucket/*"
+            }
+          ]
+        }
+      },
+      {
+        "PolicyName": "DynamoDBAccessPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:PutItem"
+              ],
+              "Resource": "arn:aws:dynamodb:*:*:table/example-table"
+            }
+          ]
+        }
+      }
+    ],
+    "tags": {
+      "Environment": "Development",
+      "Project": "Task03"
+    }
+  }
+}

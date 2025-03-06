@@ -1,0 +1,17 @@
+account_id: '196241772369'
+deploy_target_bucket: syndicate-education-platform-custom-sandbox-artifacts-sbox01/1c04993d/task03
+expiration: 2025-03-06 06:24:32.113575+00:00
+extended_prefix_mode: true
+iam_permissions_boundary: arn:aws:iam::196241772369:policy/eo_role_boundary
+project_path: C:\Users\arifbashir_dar\AWSServerless\task03
+region: eu-central-1
+resources_prefix: cmtr-1c04993d-
+tags:
+  run_id: JAP-08
+  run_type: stm
+  type: user
+  user_id: 1c04993d
+temp_aws_access_key_id: ASIAS3MHLZ5IYNQSXOFY
+temp_aws_secret_access_key: kXVCtcy44TlSh4KgABwl/47dgG6P78vskMhxzqcs
+temp_aws_session_token: IQoJb3JpZ2luX2VjEN7//////////wEaCXVzLWVhc3QtMSJIMEYCIQCSaTAOn3vFQ66WZb3+I5BityAy1aVL5yL9fxmJ2BhwUAIhANO2yQF7XViox3XzQEIKXysO2xWYD/L81qiw3eGB880rKtgCCCcQARoMMTk2MjQxNzcyMzY5IgyjGGmwlealaTWnPJoqtQJ+qMlSBBGr65n/+ao6UOtVPmyX4knKu0HK5/0saBREnauCqC9YV/tMVB3/Gt4gSw+TStuXRD2kVzUr5yxAsuLTL64nSXB+8dFtZTD+MwK71LechOU57ero5ehonPKe9k10eR8FNjRyu0Etuj1G7///mchnGYg2H74BoGAHO72+EaNsXvv2o5jUur4Dgea8FZdEw9p6uEoFVCmScVkxBy8BDZ36PTtexLaCuwVsr6M1qeeOVBvJiCKmvzfIUScHAeOhRSx48z4YoKAqs8rVP09g/bcz8FX7/o5SakqR4hRRj36CPjApBxl1wy4ZAjvOhYwyVnwOBIjuNY4BX33VRwvDhaTmiRIGNdh13l/CVvUnrJyYnz3kFlrP5N7cFGdJp0w/aEqQhyQeq4uZugRTTzj25j33FuEw2+ekvgY6nAEKbW7waHIpreQSFj58gTDNVoholaQpZnxLj+UelMqy0pwsf47bJOyMeFSICsoXNZMCz420RKKv2hrWKnBQ8nMt4djtkpIlngYECv1IwgCpPWwjyH4GWSPb3bS2576hWHzMh3OQyLfEYfF9cOtv1M5+zzOWuzy/C3SFNa08latIlUJO0yZXy2lSaTAo7aT5es9nb5aZNAnU+pLPS30=
+use_temp_creds: false

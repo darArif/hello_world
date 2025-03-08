@@ -9,9 +9,22 @@
   "timeout": 100,
   "lambda_path": "lambdas\\api_handler",
   "dependencies": [],
-  "event_sources": [],
+  "event_sources": [
+    {
+      "name": "task5_api",
+      "resource_type": "api_gateway",
+      "deploy_as": "api",
+      "resources": [
+        {
+          "path": "/events",
+          "method": "POST",
+          "authorization_type": "NONE"
+        }
+      ]
+    }
+  ],
   "env_variables": {
-    "target_table": "Events"
+    "target_table": "${target_table}"
   },
   "publish_version": true,
   "alias": "${lambdas_alias_name}",

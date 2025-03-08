@@ -1,0 +1,81 @@
+{
+  "lambda-basic-execution": {
+    "policy_content": {
+      "Statement": [
+        {
+          "Action": [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents",
+            "dynamodb:GetItem",
+            "dynamodb:Query",
+            "dynamodb:PutItem",
+            "dynamodb:Batch*",
+            "dynamodb:DeleteItem",
+            "ssm:PutParameter",
+            "ssm:GetParameter",
+            "kms:Decrypt"
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
+        }
+      ],
+      "Version": "2012-10-17"
+    },
+    "resource_type": "iam_policy",
+    "tags": {}
+  },
+  "task5_api": {
+    "resource_type": "api_gateway",
+    "deploy_stage": "api",
+    "dependencies": [],
+    "resources": {
+      "/events": {
+        "methods": {
+          "POST": {
+            "integration_type": "aws_proxy",
+            "lambda_name": "api_handler",
+            "request_templates": {},
+            "cors": true
+          },
+          "OPTIONS": {
+            "integration_type": "mock",
+            "request_templates": {
+              "application/json": "{\"statusCode\": 200}"
+            },
+            "integration_responses": {
+              "default": {
+                "status_code": "200",
+                "response_parameters": {
+                  "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                  "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                  "method.response.header.Access-Control-Allow-Origin": "'*'"
+                }
+              }
+            },
+            "method_responses": {
+              "200": {
+                "response_parameters": {
+                  "method.response.header.Access-Control-Allow-Headers": true,
+                  "method.response.header.Access-Control-Allow-Methods": true,
+                  "method.response.header.Access-Control-Allow-Origin": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tags": {}
+  },
+  "Events": {
+    "resource_type": "dynamodb_table",
+    "hash_key_name": "id",
+    "hash_key_type": "S",
+    "read_capacity": 1,
+    "write_capacity": 1,
+    "global_indexes": [],
+    "autoscaling": [],
+    "tags": {}
+  }
+}

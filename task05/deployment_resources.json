@@ -32,5 +32,23 @@
     "write_capacity": 5,
     "resource_type": "dynamodb_table",
     "tags": {}
+  },
+  "task5_api": {
+    "resource_type": "api_gateway",
+    "deploy_stage": {
+      "name": "api"
+    },
+    "resources": [
+      {
+        "path": "/events",
+        "method": "POST",
+        "lambda_name": "api_handler",
+        "authorization_type": "NONE"
+      }
+    ],
+    "binary_media_types": [],
+    "cors": false,
+    "api_key_required": false,
+    "tags": {}
   }
 }

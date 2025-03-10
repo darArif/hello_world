@@ -1,0 +1,11 @@
+#set($input = $util.dynamodb.toMapValues($ctx.args))
+#set($input.id = $util.autoId())
+#set($input.createdAt = $util.time.nowISO8601())
+{
+  "version": "2018-05-29",
+  "operation": "PutItem",
+  "key": {
+    "id": $input.id
+  },
+  "attributeValues": $input
+}

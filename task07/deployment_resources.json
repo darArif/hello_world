@@ -37,19 +37,7 @@
   },
   "appsync_role": {
     "resource_type": "iam_role",
-    "principal_service": "appsync.amazonaws.com",
-    "trusted_relationships": {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Effect": "Allow",
-          "Principal": {
-            "Service": "appsync.amazonaws.com"
-          },
-          "Action": "sts:AssumeRole"
-        }
-      ]
-    },
+    "principal_service": "appsync",
     "predefined_policies": [],
     "custom_policies": [
       "lambda-basic-execution"

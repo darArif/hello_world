@@ -29,8 +29,8 @@
     "resource_type": "dynamodb_table",
     "hash_key_name": "id",
     "hash_key_type": "S",
-    "read_capacity": 5,
-    "write_capacity": 5,
+    "read_capacity": 1,
+    "write_capacity": 1,
     "global_indexes": [],
     "autoscaling": [],
     "tags": {}
@@ -42,18 +42,6 @@
     "custom_policies": [
       "lambda-basic-execution"
     ],
-    "allowed_accounts": [],
-    "instance_profile": false,
-    "permissions_boundary": "",
-    "tags": {}
-  },
-  "appsync_dynamodb_role": {
-    "resource_type": "iam_role",
-    "principal_service": "appsync.amazonaws.com",
-    "predefined_policies": [
-      "AmazonDynamoDBFullAccess"
-    ],
-    "custom_policies": [],
     "allowed_accounts": [],
     "instance_profile": false,
     "permissions_boundary": "",

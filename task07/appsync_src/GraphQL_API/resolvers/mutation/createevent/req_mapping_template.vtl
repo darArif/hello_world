@@ -14,11 +14,15 @@
   "version": "2018-05-29",
   "operation": "PutItem",
   "key": {
-    "id": { "S": "$id" }
+    "id": { "S": "$util.autoId()" }
   },
   "attributeValues": {
     "userId": { "N": "$ctx.args.userId" },
-    "createdAt": { "S": "$createdAt" },
-    "payLoad": { "M": $util.dynamodb.toMapValuesJson($parsedPayload) }
+    "createdAt": { "S": "$util.time.nowISO8601()" },
+    "payLoad": { "M": $util.dynamodb.toMapValuesJson($ctx.args.payLoad) }
+  },
+  "condition": {
+    "expression": "attribute_not_exists(id)"
   }
 }
+

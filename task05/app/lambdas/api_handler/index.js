@@ -31,11 +31,29 @@ export const handler = async (event) => {
         const eventId = uuidv4();
         const createdAt = new Date().toISOString();
 
+        // Ensure body is a JSON object
+        let bodyContent;
+        if (typeof inputEvent.content === 'string') {
+            try {
+                // Try to parse it if it's a JSON string
+                bodyContent = JSON.parse(inputEvent.content);
+            } catch (e) {
+                // If it's not valid JSON, create an object with the content
+                bodyContent = { "value": inputEvent.content };
+            }
+        } else if (typeof inputEvent.content === 'object') {
+            // If it's already an object, use it directly
+            bodyContent = inputEvent.content;
+        } else {
+            // For other data types, create an object with the content
+            bodyContent = { "value": inputEvent.content };
+        }
+
         const eventItem = {
             id: eventId,
             principalId: Number(inputEvent.principalId),
             createdAt,
-            body: inputEvent.content
+            body: bodyContent
         };
 
         console.log("Saving to DynamoDB:", JSON.stringify(eventItem, null, 2));
@@ -48,13 +66,11 @@ export const handler = async (event) => {
 
         console.log("DynamoDB Response:", response);
 
-        const responseObject = {
+        // Return only the top-level statusCode, don't nest it in the body
+        return {
             statusCode: 201,
-            body: JSON.stringify({statusCode : 201, event : eventItem})
+            body: JSON.stringify({ event: eventItem })
         };
-
-        console.log("Final response:", JSON.stringify(responseObject, null, 2));
-        return responseObject;
 
     } catch (error) {
         console.error("Error processing request:", error);

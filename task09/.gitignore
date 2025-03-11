@@ -1,0 +1,4 @@
+.syndicate
+logs/
+.syndicate-config-*/
+task03/.syndicate-config-dev/syndicate.yml

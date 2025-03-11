@@ -29,15 +29,7 @@
     "resource_type": "api_gateway",
     "deploy_stage": "api",
     "dependencies": [],
-    "resources": {
-      "/hello": {
-        "GET": {
-          "integration_type": "AWS_PROXY",
-          "lambda_name": "hello_world",
-          "authorizer": null
-        }
-      }
-    },
+    "resources": {},
     "tags": {}
   }
 }

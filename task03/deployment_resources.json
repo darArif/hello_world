@@ -31,10 +31,10 @@
     "resources": {
       "/hello": {
         "GET": {
+          "integration_type": "AWS_PROXY",
           "lambda_name": "hello_world"
         }
       }
-    },
-    "tags": {}
+    }
   }
 }

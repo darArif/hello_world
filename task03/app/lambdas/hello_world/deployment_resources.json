@@ -1,26 +1,11 @@
 {
   "hello_world-role": {
-    "resource_type": "iam_role",
-    "principal_service": "lambda.amazonaws.com",
+    "predefined_policies": [],
+    "principal_service": "lambda",
     "custom_policies": [
-      {
-        "policy_name": "LambdaBasicExecution",
-        "policy_content": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
-              ],
-              "Resource": "*"
-            }
-          ]
-        }
-      }
+      "lambda-basic-execution"
     ],
+    "resource_type": "iam_role",
     "tags": {}
   }
 }

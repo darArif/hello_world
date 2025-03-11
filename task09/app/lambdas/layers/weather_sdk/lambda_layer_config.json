@@ -1,8 +1,8 @@
 {
-  "name": "api_layer",
+  "name": "weather_sdk",
   "resource_type": "lambda_layer",
   "runtimes": [
     "nodejs20.x"
   ],
-  "deployment_package": "api_layer_layer.zip"
+  "deployment_package": "weather_sdk_layer.zip"
 }

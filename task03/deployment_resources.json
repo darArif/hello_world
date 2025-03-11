@@ -32,7 +32,9 @@
     "resources": {
       "/hello": {
         "GET": {
-          "lambda_name": "hello_world"
+          "integration_type": "AWS_PROXY",
+          "lambda_name": "hello_world",
+          "authorizer": null
         }
       }
     },
